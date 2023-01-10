@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react"
+import { useRouter } from "next/router"
 import { ConnectButton } from "web3uikit"
 import Link from "next/link"
 
 function Navbar() {
     const [activeLink, setActiveLink] = useState("/")
+    const router = useRouter()
 
     useEffect(() => {
-        setActiveLink(window.location.pathname)
-    }, [window.location.pathname])
+        setActiveLink(router.pathname)
+    }, [router])
 
     return (
         <nav className="py-5 px-8 flex flex-row justify-between items-center border-b-4 border-green-500 mb-4 font-medium text-xl">
