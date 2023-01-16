@@ -9,7 +9,7 @@ function Navbar() {
 
     useEffect(() => {
         setActiveLink(router.pathname)
-    }, [router])
+    }, [router.pathname])
 
     return (
         <nav className="py-5 px-8 flex flex-row justify-between items-center border-b-4 border-green-500 mb-4 font-medium text-xl">
