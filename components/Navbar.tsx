@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { ConnectButton } from "@rainbow-me/rainbowkit"
+import { ConnectCustomButton } from "./ConnectCustomButton"
 import { useRouter } from "next/router"
 import Link from "next/link"
 
@@ -45,7 +45,7 @@ export default function Navbar() {
           Profile
         </Link>
       </div>
-      <ConnectButton />
+      <ConnectCustomButton />
     </nav>
   )
 }

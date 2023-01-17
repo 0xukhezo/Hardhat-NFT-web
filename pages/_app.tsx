@@ -1,20 +1,19 @@
 import React from "react"
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit"
+import { getDefaultWallets, RainbowKitProvider, midnightTheme } from "@rainbow-me/rainbowkit"
 import { configureChains, createClient, WagmiConfig } from "wagmi"
-import { mainnet, polygon, optimism, arbitrum } from "wagmi/chains"
+import { mainnet, goerli } from "wagmi/chains"
 import { alchemyProvider } from "wagmi/providers/alchemy"
 import { publicProvider } from "wagmi/providers/public"
 
 import "@/styles/globals.css"
+import "@rainbow-me/rainbowkit/styles.css"
 import Head from "next/head"
 import type { AppProps } from "next/app"
 
 import Navbar from "../components/Navbar"
 
-import "@rainbow-me/rainbowkit/styles.css"
-
 const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum],
+  [mainnet, goerli],
   [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 )
 
@@ -39,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <WagmiConfig client={wagmiClient}>
-        <RainbowKitProvider chains={chains}>
+        <RainbowKitProvider chains={chains} modalSize="compact" theme={midnightTheme()}>
           <Navbar />
           <Component {...pageProps} />
         </RainbowKitProvider>
